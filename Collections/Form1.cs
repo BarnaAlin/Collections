@@ -102,5 +102,35 @@ namespace Collections
 
         }
 
+        private void filtersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            foreach (int elem in a.Where(f))
+            {
+                Console.WriteLine(elem);
+            }
+
+            foreach (int elem in a.Where(Prim))
+            {
+                Console.WriteLine(elem);
+            }
+
+
+        }
+
+        private bool Prim(int n)
+        {
+            for (int d = 2; d <= n / 2; d++)
+            {
+                if (n % d == 0) return false;
+            }
+            return true;
+        }
+
+        private bool f(int arg)
+        {
+            return arg % 2 == 0;
+        }
     }
 }
