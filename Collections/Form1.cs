@@ -106,12 +106,12 @@ namespace Collections
         {
             int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            foreach (int elem in a.Where(f))
+            foreach (int elem in a.Where(x => x % 2 == 0))
             {
                 Console.WriteLine(elem);
             }
 
-            foreach (int elem in a.Where(Prim))
+            foreach (int elem in a.Where(x => Prim(x)))
             {
                 Console.WriteLine(elem);
             }
@@ -128,9 +128,27 @@ namespace Collections
             return true;
         }
 
-        private bool f(int arg)
+        private void filtersOnStudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            return arg % 2 == 0;
+            Student[] students = new Student[]
+{
+                new Student{Nume="Toni", Nota = 5, Grupa = "Prof"},
+                new Student{Nume="Ana", Nota = 9, Grupa = "221"},
+                new Student{Nume="Dorel", Nota = 2, Grupa = "221"},
+                new Student{Nume="Popescu", Nota = 7, Grupa = "221"}
+            };
+
+            foreach (Student st in students.Where(x => x.Nota >= 5))
+            {
+                Console.WriteLine(st.Nume + " " + st.Nota + "    grupa:" + st.Grupa);
+            }
+
+            foreach (Student st in students.Where(x => x.Nota >= 5 && x.Grupa != "Prof"))
+            {
+                Console.WriteLine(st.Nume + " " + st.Nota + "    grupa:" + st.Grupa);
+            }
+
+
         }
     }
 }
